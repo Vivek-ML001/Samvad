@@ -1,7 +1,10 @@
 streamlit
+python-dotenv
 langgraph
-langgraph-checkpoint
 langgraph-checkpoint-sqlite
 langchain-core
 langchain-groq
-python-dotenv
+langchain-text-splitters
+chromadb
+sentence-transformers
+pypdf

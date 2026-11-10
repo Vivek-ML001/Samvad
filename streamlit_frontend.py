@@ -158,22 +158,7 @@ st.sidebar.title('🪐 Samvad')
 if st.sidebar.button('✏️  New chat', key='new_chat'):
     reset_chat()
     st.rerun()
-
-# ---- Documents (RAG) ----
-st.sidebar.header('Documents')
-files = st.sidebar.file_uploader(
-    "Add PDFs to this chat",
-    type="pdf",
-    accept_multiple_files=True,
-    key=f"uploader_{st.session_state['thread_id']}",  # har chat ka alag uploader
-)
-if st.sidebar.button("Add to knowledge base", key="add_kb") and files:
-    with st.spinner("Indexing..."):
-        for f in files:
-            n = add_pdf(f.getvalue(), f.name, st.session_state['thread_id'])
-            st.sidebar.success(f"{f.name}: {n} chunks")
-st.sidebar.caption(f"Chunks in this chat: {doc_count(st.session_state['thread_id'])}")
-
+    
 # ---- Recent chats ----
 st.sidebar.header('Recent')
 
@@ -199,6 +184,24 @@ for thread_id in reversed(st.session_state['chat_thread']):
             temp_message.append({'role': role, 'content': mesg.content})
         st.session_state['message_history'] = temp_message
         st.rerun()
+    
+
+# ---- Documents (RAG) ----
+st.sidebar.header('Documents')
+files = st.sidebar.file_uploader(
+    "Add PDFs to this chat",
+    type="pdf",
+    accept_multiple_files=True,
+    key=f"uploader_{st.session_state['thread_id']}",  # har chat ka alag uploader
+)
+if st.sidebar.button("Add to knowledge base", key="add_kb") and files:
+    with st.spinner("Indexing..."):
+        for f in files:
+            n = add_pdf(f.getvalue(), f.name, st.session_state['thread_id'])
+            st.sidebar.success(f"{f.name}: {n} chunks")
+st.sidebar.caption(f"Chunks in this chat: {doc_count(st.session_state['thread_id'])}")
+
+
 
 
 # ---------------- Main area ----------------

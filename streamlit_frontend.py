@@ -158,6 +158,24 @@ st.sidebar.title('🪐 Samvad')
 if st.sidebar.button('✏️  New chat', key='new_chat'):
     reset_chat()
     st.rerun()
+
+# ---- Explore tools ----
+TOOLS = [
+    {"name": "RAG PDF Chat", "icon": "⛩️", "url": "https://pdf-chatbot123.streamlit.app"},
+    # directly add the link of my app 
+]
+
+with st.sidebar:
+    with st.popover("⋯  Explore", use_container_width=True):
+        st.caption("More tools")
+        for t in TOOLS:
+            st.link_button(
+                f'{t["icon"]}  {t["name"]}',
+                t["url"],
+                use_container_width=True,
+            )
+
+
     
 # ---- Recent chats ----
 st.sidebar.header('Recent')

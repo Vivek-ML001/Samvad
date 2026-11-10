@@ -162,6 +162,7 @@ if st.sidebar.button('✏️  New chat', key='new_chat'):
 # ---- Explore tools ----
 TOOLS = [
     {"name": "RAG PDF Chat", "icon": "⛩️", "url": "https://pdf-chatbot123.streamlit.app"},
+    {"name": "SPAM CLASSIFY","icon": "📧", "url":"https://huggingface.co/spaces/vivek2477/gpt2-spam-classifier"},
     # directly add the link of my app 
 ]
 
@@ -174,7 +175,6 @@ with st.sidebar:
                 t["url"],
                 use_container_width=True,
             )
-
 
     
 # ---- Recent chats ----
